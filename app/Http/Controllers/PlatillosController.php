@@ -5,16 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\Dish;
 use Illuminate\Http\Request;
 
-class PlatillosController extends Controller
+class DishsController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $platillos = Dish::get();
-
-        return  $platillos;
+        return  Dish::get();
     }
 
     /**
@@ -36,7 +34,7 @@ class PlatillosController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Platillo $platillo)
+    public function show(Dish $dish)
     {
         //
     }
@@ -44,7 +42,7 @@ class PlatillosController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Platillo $platillo)
+    public function edit(Dish $dish)
     {
         //
     }
@@ -52,7 +50,7 @@ class PlatillosController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Platillo $platillo)
+    public function update(Request $request, Dish $dish)
     {
         //
     }
@@ -60,7 +58,7 @@ class PlatillosController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Platillo $platillo)
+    public function destroy(Dish $dish)
     {
         //
     }

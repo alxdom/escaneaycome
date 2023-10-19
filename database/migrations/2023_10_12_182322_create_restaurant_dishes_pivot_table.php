@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('ingredient_dishes_pivot', function (Blueprint $table) {
-            $table->index('ingredient_id');
-            $table->foreign('ingredient_id')->references('id')->on('ingredients')->onDelete('cascade');
+        Schema::create('restaurant_dishes_pivot', function (Blueprint $table) {
+            $table->index('restaurant_id');
+            $table->foreign('restaurant_id')->references('id')->on('restaurants')->onDelete('cascade');
 
             $table->index('dish_id');
             $table->foreign('dish_id')->references('id')->on('dishes')->onDelete('cascade');
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('ingredient_dishes_pivot');
+        Schema::dropIfExists('restaurant_dishes_pivot');
     }
 };
