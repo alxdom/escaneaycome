@@ -17,11 +17,11 @@ return new class extends Migration
             $table->string('description');
             $table->text('image');
 
-            $table->index('time_dishes_id');
-            $table->foreign('time_dishes_id')->references('id')->on('time_dishes')->onDelete('cascade');
+            $table->unsignedBigInteger('time_id');
+            $table->foreign("time_id")->references("id")->on("time_dishes")->onDelete("cascade");
 
-            $table->index('category_id');
-            $table->foreign('category_id')->references('id')->on('category_dishes')->onDelete('cascade');
+            $table->unsignedBigInteger('category_id');
+            $table->foreign('category_id')->references('id')->on('categories_dishes')->onDelete('cascade');
 
             $table->timestamps();
         });

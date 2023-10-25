@@ -12,11 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('ingredient_dishes_pivot', function (Blueprint $table) {
-            $table->index('ingredient_id');
-            $table->foreign('ingredient_id')->references('id')->on('ingredients')->onDelete('cascade');
-
-            $table->index('dish_id');
+            $table->unsignedBigInteger('dish_id');
             $table->foreign('dish_id')->references('id')->on('dishes')->onDelete('cascade');
+            $table->unsignedBigInteger('ingredient_id');
+            $table->foreign("ingredient_id")->references("id")->on("ingredients")->onDelete("cascade");
         });
     }
 
