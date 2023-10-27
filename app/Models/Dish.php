@@ -5,6 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Prompts\Table;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+
+use App\Models\Category;
 
 class Dish extends Model
 {
@@ -32,4 +35,13 @@ class Dish extends Model
         'category_id'
     ];
 
+    public function category(): BelongsTo
+    {
+        return $this->belongsTo(Category::class, 'category_id');
+    }
+
+    public function time(): BelongsTo
+    {
+        return $this->belongsTo(Category::class, 'category_id');
+    }
 }

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\RestaurantsController;
+use App\Http\Controllers\DishesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +21,4 @@ Route::get('/', function () {
 });
 
 Route::resource('restaurants', RestaurantsController::class);
+Route::resource('dishes', DishesController::class);

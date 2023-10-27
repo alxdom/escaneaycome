@@ -12,7 +12,28 @@ class DishesController extends Controller
      */
     public function index()
     {
-        return  Dish::get();
+        $dishes = Dish::get();
+
+        return view("dishes.index",
+        [
+            'data' => $dishes
+        ]);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        return view("dishes.create");
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
+    {
+        return view("dishes.edit");
     }
 
     /**
