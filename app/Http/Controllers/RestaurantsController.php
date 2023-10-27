@@ -19,7 +19,8 @@ class RestaurantsController extends Controller
             'name' => $response->name,
             'slogan' => $response->slogan,
             'company' => $response->company->name,
-            'logo'=> $response->logo
+            'logo'=> $response->logo,
+            'restaurant_id'=> $response->id
         ]);
     }
 
@@ -28,6 +29,15 @@ class RestaurantsController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        //Convert img to base64
+        $logoBase64 = "data:image/png;base64,".base64_encode(file_get_contents($request->logo));
+
+        $restaurant = Restaurant::where("id", $id)->update([
+            "name"=> $request->name,
+            "slogan"=> $request->slogan,
+            "logo"=> $logoBase64
+        ]);
+
+        return redirect()->route("restaurants.index");
     }
 }
