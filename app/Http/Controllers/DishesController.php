@@ -33,7 +33,12 @@ class DishesController extends Controller
      */
     public function edit(string $id)
     {
-        return view("dishes.edit");
+        $dish = Dish::where("id", $id)->with(['time', 'category'])->first();
+
+        return view("dishes.edit",
+        [
+            'data' => $dish
+        ]);
     }
 
     /**
@@ -47,9 +52,20 @@ class DishesController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Dish $dish)
+    public function update(Request $request, string $id)
     {
-        //
+        //Convert img to base64
+        $imageBase64 = "data:image/png;base64,".base64_encode(file_get_contents($request->image));
+
+        $dish = Dish::where("id", $id)->update([
+            "name"=> $request->name,
+            "description"=> $request->description,
+            "image"=> $imageBase64
+        ]);
+
+        return redirect()->route("dishes.edit", $dish->id);
+
+        // return redirect()->route("dishes.index");
     }
 
     /**

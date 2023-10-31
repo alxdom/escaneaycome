@@ -8,6 +8,7 @@ use Laravel\Prompts\Table;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 use App\Models\Category;
+use App\Models\Time;
 
 class Dish extends Model
 {
@@ -31,7 +32,7 @@ class Dish extends Model
         'name',
         'description',
         'image',
-        'time_dishes_id',
+        'time_id',
         'category_id'
     ];
 
@@ -42,6 +43,6 @@ class Dish extends Model
 
     public function time(): BelongsTo
     {
-        return $this->belongsTo(Category::class, 'category_id');
+        return $this->belongsTo(Time::class, 'time_id');
     }
 }

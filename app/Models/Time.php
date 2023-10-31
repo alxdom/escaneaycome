@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Prompts\Table;
 
-class Category extends Model
+class Time extends Model
 {
     use HasFactory;
 
@@ -15,7 +15,7 @@ class Category extends Model
      *
      * @var string
      */
-    protected $table = 'categories_dishes';
+    protected $table = 'time_dishes';
 
         /**
      * Indicates if the model should be timestamped.
@@ -25,7 +25,7 @@ class Category extends Model
     public $timestamps = true;
 
     protected $fillable = [
-        'name'
+        'description'
     ];
 
 }
